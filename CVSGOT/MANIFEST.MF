@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: awoo.util.jar
+Main-Class: tesco.got.GotMain
+
