@@ -15,7 +15,7 @@ import java.net.Socket;
 import awoo.util.Logger;
 
 /**
- * @author ���ѿ� (duloveme@hotmail.com)
+ * @author hongGilDong (duloveme@hotmail.com)
  *
  * 2005. 6. 2. ���� 11:08:41
  * AcceptThread.java
