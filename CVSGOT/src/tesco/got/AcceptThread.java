@@ -17,8 +17,8 @@ import awoo.util.Logger;
 /**
  * @author hongGilDong (duloveme@hotmail.com)
  *
- * 2005. 6. 2. ���� 11:08:41
- * AcceptThread.java
+ * 2005. 6. 2. kimyh  11:08:41
+ * AcceptThread.java  
  * <br>
  * Ŭ���̾�Ʈ ������ ó���մϴ�.
  */
