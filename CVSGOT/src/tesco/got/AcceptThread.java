@@ -1,26 +1,26 @@
 /*****************************************************
  * PROGRAM ID    : AceeptThread
  * PROGRAM NAME	 : 
- * CREATED BY	 : ÀÌÅÂ¼º (HBOµ¥¸ó ÀÌ¿ëÇÔ)
+ * CREATED BY	 : ï¿½ï¿½ï¿½Â¼ï¿½ (HBOï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½)
  * CREATION DATE : 2011.11.14
  *****************************************************
  *****************************************************
- *  º¯°æÀÏÀÚ    /  º¯°æÀÚ  / º¯°æ»çÀ¯ 
+ *  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½    /  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  / ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 
  ******************************************************/
 package tesco.got;
-
+ 
 import java.net.ServerSocket;
 import java.net.Socket;
 import awoo.util.Logger;
 
 /**
- * @author ±èÇÑ¿µ (duloveme@hotmail.com)
+ * @author ï¿½ï¿½ï¿½Ñ¿ï¿½ (duloveme@hotmail.com)
  *
- * 2005. 6. 2. ¿ÀÀü 11:08:41
+ * 2005. 6. 2. ï¿½ï¿½ï¿½ï¿½ 11:08:41
  * AcceptThread.java
  * <br>
- * Å¬¶óÀÌ¾ðÆ® ¿¬°áÀ» Ã³¸®ÇÕ´Ï´Ù.
+ * Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
  */
 
 public class AcceptThread extends Thread {
@@ -30,8 +30,8 @@ public class AcceptThread extends Thread {
     private Configuration config = null;
     /**
      * 
-     * @param sock ¼­¹ö ¼ÒÄÏ
-     * @param logger Logger ÀÎÅÍÆäÀÌ½º¸¦ »ó¼Ó¹ÞÀº Å¬·¡½º ¶Ç´Â ±× ÇÏÀ§ Å¬·¡½º
+     * @param sock ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+     * @param logger Logger ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
      */
     public AcceptThread(ServerSocket sock,Logger logger, Configuration config){
         this.sock = sock;
@@ -39,7 +39,7 @@ public class AcceptThread extends Thread {
         this.config = config;
     }
     
-    /* (ºñJavadoc)
+    /* (ï¿½ï¿½Javadoc)
      * @see java.lang.Runnable#run()
      */
     public void run(){
@@ -50,12 +50,12 @@ public class AcceptThread extends Thread {
                 ct.start();
             }
         }catch (Exception e) {
-            this.logger.writeEntry("AcceptThread.Start()ÇÔ¼ö"+e);
+            this.logger.writeEntry("AcceptThread.Start()ï¿½Ô¼ï¿½"+e);
         }
     }
     
     /**
-     * ¾²·¹µå¸¦ ÁßÁöÇÕ´Ï´Ù.
+     * ï¿½ï¿½ï¿½ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
      */
     public void setStop(){
         this.flag = false;
