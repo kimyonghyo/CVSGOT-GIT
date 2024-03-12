@@ -5,7 +5,7 @@
  * CREATION DATE : 2013.07
  *****************************************************
  *****************************************************
- *  º¯°æÀÏÀÚ    /  º¯°æÀÚ  / º¯°æ»çÀ¯ 
+ *  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½    /  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  / ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
  ******************************************************/
 
 package tesco.got;
@@ -51,7 +51,7 @@ import awoo.util.Session;
 import awoo.util.StringUtil;
 
 /**
- *  ¿¬°áµÈ Å¬¶óÀÌ¾ðÆ®¿Í Åë½Å ¹× ¸í·É Ã³¸®¸¦ ´ã´çÇÏ´Â Å¬·¡½º
+ *  Client Thread Main ì£¼ì„ í•œê¸€ ì²˜ë¦¬...
  */
 public class ClientThread extends Thread { 
 
@@ -73,23 +73,23 @@ public class ClientThread extends Thread {
         
         this.ip = this.socket.getInetAddress().getHostAddress();
 
-        this.socket.setSoTimeout(10000); // 10ÃÊ ( ¼­¹ö ÀÀ´ä ´ë±â½Ã°£ )
+        this.socket.setSoTimeout(10000); // 10ï¿½ï¿½ ( ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã°ï¿½ )
        
         this.bis = new BufferedInputStream(this.socket.getInputStream());
         this.bos = new BufferedOutputStream(this.socket.getOutputStream());
     }
 
     /**
-     * À¯È¿ÇÑ ¼¼¼ÇÀÎÁö °Ë»çÇÕ´Ï´Ù.
+     * ï¿½ï¿½È¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Õ´Ï´ï¿½.
      * 
      * @param session_key
-     *                  ¼¼¼ÇID
-     * @return À¯È¿ÇÑ ¼¼¼ÇÀÌ¸é true ¸¦ °¡Á®¿É´Ï´Ù
+     *                  ï¿½ï¿½ï¿½ï¿½ID
+     * @return ï¿½ï¿½È¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ true ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½É´Ï´ï¿½
      */
     private boolean checkSession(String session_key) {
         SessionManager sm = SessionManager.getInstatnce();
         Session session = sm.getSession(session_key);              
-        int expireTimeOut = 180; // 60ºÐ¼³Á¤ -> 2015-03-16 ¼öÁ¤. ÀÌÁ¾¿í. ±âÁ¸ 60ºÐ¿¡¼­ 3½Ã°£À¸·Î ¼¼¼ÇÅ¸ÀÓ Áõ°¡.
+        int expireTimeOut = 180; // 60ï¿½Ð¼ï¿½ï¿½ï¿½ -> 2015-03-16 ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ 60ï¿½Ð¿ï¿½ï¿½ï¿½ 3ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
         
         if (session == null) {
             return false;
@@ -111,14 +111,14 @@ public class ClientThread extends Thread {
     }
 
     /**
-     * ·Î±×ÀÎ Ã³¸®
+     * ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
      */
     private void executeLogin(Object[] params) throws GotException,Exception {
     	String work_flag = params[1].toString();
     	
     	if(work_flag.equals("Q")){
 			if (params.length < 8) { 
-				throw new GotException("PDA Version Á¤º¸°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.\n¾÷µ¥ÀÌÆ® ÇØÁÖ¼¼¿ä.");
+				throw new GotException("PDA Version ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.");
 			}
     	        
 	        String user     = params[3].toString();
@@ -143,14 +143,14 @@ public class ClientThread extends Thread {
     }
     
     /**
-     * ·Î±×¾Æ¿ô Ã³¸®
+     * ï¿½Î±×¾Æ¿ï¿½ Ã³ï¿½ï¿½
      */
     private void executeLogOut(Object[] params) throws GotException,Exception {
     	String work_flag = params[1].toString();
     	
     	if(work_flag.equals("Q")){
 			if (params.length < 3) { 
-				throw new GotException("PDA Version Á¤º¸°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.\n¾÷µ¥ÀÌÆ® ÇØÁÖ¼¼¿ä.");
+				throw new GotException("PDA Version ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.");
 			}
 	        
 			String session_key = params[2].toString();
@@ -159,7 +159,7 @@ public class ClientThread extends Thread {
 			
 			if(sm.getSession(session_key) != null)
 			{
-				throw new GotException(session_key + " ¼¼¼ÇÀÌ »ì¾ÆÀÖ½À´Ï´Ù.");
+				throw new GotException(session_key + " ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½Ï´ï¿½.");
 			}
 
 	        sendMessage(Common.LOGOUT, work_flag, "0", "","");
@@ -167,12 +167,12 @@ public class ClientThread extends Thread {
     }
 
     /**
-     * »óÇ° ¸¶½ºÅÍ Á¶È¸
+     * ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
      * @param params
      */
     private void executeIms(Object[] params) throws GotException,Exception {    	
     	String work_flag = params[1].toString();
-    	if (work_flag.equals("Q")) {	//»óÇ°Á¶È¸  
+    	if (work_flag.equals("Q")) {	//ï¿½ï¿½Ç°ï¿½ï¿½È¸  
     		
 	    	if (params.length < 4) {
 		        sendRequireParamMessage(Common.IMS, params[1].toString());
@@ -185,7 +185,7 @@ public class ClientThread extends Thread {
 	    	
 	    	sendMessage(Common.IMS, work_flag, "0", "", tmp);
     	
-    	} else if (work_flag.equals("S")) {	//Áø¿­¼ö Àü¼Û
+    	} else if (work_flag.equals("S")) {	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     		
     		if (params.length < 5) {
 		        sendRequireParamMessage(Common.IMS, params[1].toString());
@@ -203,7 +203,7 @@ public class ClientThread extends Thread {
     }
         
     /**
-     * ÀÏÀÏÆÇ¸Å¼ö·®Á¶È¸(»óÇ° ¸¶½ºÅÍ)
+     * ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸Å¼ï¿½ï¿½ï¿½ï¿½ï¿½È¸(ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
      * @param params
      */
     private void executeDis(Object[] params) throws GotException,Exception {        
@@ -222,7 +222,7 @@ public class ClientThread extends Thread {
     }
     
     /**
-     * °áÇ°µî·Ï
+     * ï¿½ï¿½Ç°ï¿½ï¿½ï¿½
      * @param params
      */
     private void executeOsi(Object[] params) throws GotException,Exception {        
@@ -256,7 +256,7 @@ public class ClientThread extends Thread {
     }
     
     /**
-     * Price Card - Á¶È¸ ¹× µî·Ï Ã³¸®
+     * Price Card - ï¿½ï¿½È¸ ï¿½ï¿½ ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
      * @param params
      */
     private void executePop(Object[] params) throws GotException,Exception {
@@ -287,7 +287,7 @@ public class ClientThread extends Thread {
     }      
     
     /**
-     * ¹ÝÇ°µî·Ï
+     * ï¿½ï¿½Ç°ï¿½ï¿½ï¿½
      * @param params
      */
     private void executeRti(Object[] params) throws GotException,Exception {        
@@ -318,7 +318,7 @@ public class ClientThread extends Thread {
     }
            
     /**
-	 * Æó±âµî·Ï 
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	 * @param params
 	 * @throws GotException
 	 * @throws Exception
@@ -351,7 +351,7 @@ public class ClientThread extends Thread {
 	}
 	
 	/**
-     * Àç°íÁ¶Á¤
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param params
      */
     private void executeAds(Object[] params) throws GotException,Exception {        
@@ -381,7 +381,7 @@ public class ClientThread extends Thread {
     } 
 	
     /**
-     * °Ë¼öÈ®ÀÎ
+     * ï¿½Ë¼ï¿½È®ï¿½ï¿½
      * @param params
      */
     private void executeIac(Object[] params) throws GotException,Exception {        
@@ -415,7 +415,7 @@ public class ClientThread extends Thread {
     }
     
     /**
-     * ÅëÇÕ¹ßÁÖ
+     * ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½
      * @param params
      */
     private void executeIod(Object[] params) throws GotException,Exception {        
@@ -429,7 +429,7 @@ public class ClientThread extends Thread {
             String item_code = Etc.getItemCodebyBarcode(this.store_code, params[3].toString().trim());            
             IodQuery pq = new IodQuery(this.store_code,item_code);
             
-            // Å×½ºÆ®
+            // ï¿½×½ï¿½Æ®
             //String tmp = pq.executeQuery();
             String tmp = pq.executeQuery(this.logger);
             IoLog = tmp.substring(0, 1);
@@ -450,7 +450,7 @@ public class ClientThread extends Thread {
         	IoLog = work_flag;
 	    	IodSave ms = new IodSave(this.store_code, item_code, qty, time_flag, order_method, this.user_id);
 	    	
-	    	// Å×½ºÆ®
+	    	// ï¿½×½ï¿½Æ®
             //ms.executeQuery();
 	    	ms.executeQuery(this.logger, this.ip);
             
@@ -459,7 +459,7 @@ public class ClientThread extends Thread {
     }     
     
     /**
-     * RTC ¶óº§ Ãâ·Â Á¶È¸
+     * RTC ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
      * @param params
      */
     private void executeRtc(Object[] params) throws GotException,Exception {
@@ -478,7 +478,7 @@ public class ClientThread extends Thread {
     }   
     
     /**
-     * ½Å¼±Àç°íÁ¶»ç ³¯Â¥ Á¶È¸
+     * ï¿½Å¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ ï¿½ï¿½È¸
      * @param params
      */
     private void executeFsd(Object[] params) throws GotException,Exception {
@@ -495,7 +495,7 @@ public class ClientThread extends Thread {
     }
     
     /**
-     * ½Å¼±Àç°íÁ¶»ç
+     * ï¿½Å¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param params
      */
     private void executeFss(Object[] params) throws GotException,Exception {        
@@ -530,7 +530,7 @@ public class ClientThread extends Thread {
     }
     
     /**
-     * µðÁöÅÐ»óÇ°±Ç Àç°íÁ¶»ç ÀúÀå
+     * ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
      * @param params
      */
     private void executeDgv(Object[] params) throws GotException,Exception {
@@ -554,7 +554,7 @@ public class ClientThread extends Thread {
     }    
 //    
 //    /**
-//     * ÅëÇÕ¹ßÁÖ ¼öµ¿¹ßÁÖ
+//     * ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //     * @param params
 //     */
 //    private void executeImo(Object[] params) throws GotException,Exception {        
@@ -588,7 +588,7 @@ public class ClientThread extends Thread {
 //    }
 //    
 //    /**
-//     * ÅëÇÕ¹ßÁÖ ½Å¼±¹ßÁÖ
+//     * ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ ï¿½Å¼ï¿½ï¿½ï¿½ï¿½ï¿½
 //     * @param params
 //     */
 //    private void executeIfo(Object[] params) throws GotException,Exception {    	
@@ -622,7 +622,7 @@ public class ClientThread extends Thread {
 //    }
 //    
 //    /**
-//     * ÅëÇÕ¹ßÁÖ Çà»ç¹ßÁÖ
+//     * ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //     * @param params
 //     */
 //    private void executeIpo(Object[] params) throws GotException,Exception {        
@@ -656,7 +656,7 @@ public class ClientThread extends Thread {
 //    }        
 //    
 //    /**
-//     * ·Î±×ºÏ
+//     * ï¿½Î±×ºï¿½
 //     * @param params
 //     */
 //    private void executeLgb(Object[] params) throws GotException,Exception {        
@@ -697,7 +697,7 @@ public class ClientThread extends Thread {
 //    }
     
     /**
-     * Å¬¶óÀÌ¾ðÆ® ¿äÃ» Ã³¸®
+     * Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ® ï¿½ï¿½Ã» Ã³ï¿½ï¿½
      * @param params
      */
     private void parseCommand(Object[] params) {
@@ -724,12 +724,12 @@ public class ClientThread extends Thread {
             if (command.equals(Common.LOGIN)) {
                 executeLogin(params);
             } 
-            //else if (command.equals(Common.LOGOUT)) { // ·Î±×¾Æ¿ô - Å×½ºÆ® Áß
+            //else if (command.equals(Common.LOGOUT)) { // ï¿½Î±×¾Æ¿ï¿½ - ï¿½×½ï¿½Æ® ï¿½ï¿½
             //    executeLogOut(params);
             //} 
-            else if (command.equals(Common.IMS)) { // »óÇ°Á¶È¸
+            else if (command.equals(Common.IMS)) { // ï¿½ï¿½Ç°ï¿½ï¿½È¸
                 executeIms(params);
-            } else if (command.equals(Common.OSI)) { // °áÇ°µî·Ï
+            } else if (command.equals(Common.OSI)) { // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½
             	executeOsi(params);
             } else if (command.equals(Common.SID)) {
                 executeDis(params);
@@ -753,7 +753,7 @@ public class ClientThread extends Thread {
             	executeIac(params);
             } else if (command.equals(Common.IOD)) {
             	executeIod(params);
-            	work_flag = IoLog;	// ÅëÇÕ¹ßÁÖÀÇ À¯Çü¿¡ µû¶ó ±¸ºÐÇÏ±â À§ÇØ
+            	work_flag = IoLog;	// ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½
 //            } else if (command.equals(Common.LGB)) {
 //            	executeLgb(params);            	
             } else {
@@ -761,7 +761,7 @@ public class ClientThread extends Thread {
                 return;
             }
             
-            //Àü¹®Çì´õ ³»¿ë¸¸ ·Î±×·Î ³²±è
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ë¸¸ ï¿½Î±×·ï¿½ ï¿½ï¿½ï¿½ï¿½
             if(this.logger != null){
                 if (command.equals(Common.IAC) || command.equals(Common.IOD)) {
                 	
@@ -769,7 +769,7 @@ public class ClientThread extends Thread {
                 	for(int i = 0; i < params.length; i++)
                 		logParams += params[i].toString() + " : ";
                 	
-                	// 2015-07-02 ¼öÁ¤. ÀÌÁ¾¿í. ÀÚ¹Ù ÇÏÀ§ ¹öÀü¿¡¼­ params °´Ã¼ ÀÌ¸§, ÁÖ¼Ò µîÀÌ ÂïÈ÷´Â °ÍÀ» ¼öÁ¤. 
+                	// 2015-07-02 ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½Ú¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ params ï¿½ï¿½Ã¼ ï¿½Ì¸ï¿½, ï¿½Ö¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. 
                 	//this.logger.writeEntry("[" + this.ip + "] : " + params);		
                 	this.logger.writeEntry("[" + this.ip + "] : " + logParams);
                 	
@@ -805,7 +805,7 @@ public class ClientThread extends Thread {
                         
             Object[] params = StringUtil.split(packet, Common.FS);
            
-            /** ·Î±×ÃßÀû */
+            /** ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ */
             String command = params[0].toString();
                         
             parseCommand(params);            
@@ -838,12 +838,12 @@ public class ClientThread extends Thread {
     }
 
     /**
-     * Å¬¶óÀÌ¾ðÆ®·Î ¸Þ¼¼Áö Àü´Þ
-     * @param command Å¬¶óÀÌ¾ðÆ®·Î ºÎÅÍ Àü´Þ¹ÞÀº ¸í·É¾î
-     * @param work_flag Å¬¶óÀÌ¾ðÆ®·Î ºÎÅÍ ÀÜ´Þ¹ÞÀº ÀÛ¾÷±¸ºÐ
-     * @param res_code ÀÀ´ä ÄÚµå (")" - ¼º°ø / "1" - ½ÇÆÐ)
-     * @param res_msg ¿¡·¯ ¸Þ¼¼Áö
-     * @param param ÆÄ¶ó¹ÌÅÍ
+     * Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+     * @param command Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Þ¹ï¿½ï¿½ï¿½ ï¿½ï¿½É¾ï¿½
+     * @param work_flag Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ü´Þ¹ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½
+     * @param res_code ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ (")" - ï¿½ï¿½ï¿½ï¿½ / "1" - ï¿½ï¿½ï¿½ï¿½)
+     * @param res_msg ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
+     * @param param ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½
      */
     private void sendMessage(String command, String work_flag, String res_code,
             String res_msg, String param) {
@@ -874,7 +874,7 @@ public class ClientThread extends Thread {
     
     private void sendErrorMessage(String command, String work_flag, String err_msg) {
         sendMessage(command, work_flag, "1", err_msg, "");
-// 		L4(?)¿¡¼­ ¼­ºñ½º Ã¼Å©¸¦ À§ÇØ¼­ ¼ÒÄ¹À» Áö¼ÓÀûÀ¸·Î ³¯¸®±â ¶§¹®¿¡ ·Î±×´Â ³²±âÁö ¾Êµµ·Ï ÇÑ´Ù.
+// 		L4(?)ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¼Å©ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½Ä¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±×´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Êµï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
 //        if(this.logger != null){
 //        	this.logger.writeEntry("[" + this.ip + "]\t" + this.user_id + "\t" + command + " \t" + work_flag + "\tError : " + err_msg);
 //        }
@@ -893,52 +893,52 @@ public class ClientThread extends Thread {
     }
     
     /**
-     * ¼¼¼ÇÀÌ ¸¸·áµÇ¾úÀ½
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½
      */
     private void sendSesstionTimeOutMessage() {
-        sendErrorMessage(Common.SESSION_TIME_OUT, "", "·Î±×ÀÎ ½Ã°£ÀÌ ¸¸·áµÇ¾ú½À´Ï´Ù.\r\nÀç·Î±×ÀÎ ÇØÁÖ¼¼¿ä");
+        sendErrorMessage(Common.SESSION_TIME_OUT, "", "ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.\r\nï¿½ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½");
     }
     
     /**
-     * ·Î±×ÀÎ ÀÌ µÇÁö ¾Ê¾ÒÀ½
+     * ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾ï¿½ï¿½ï¿½
      */
     private void sendNotLoginMessage() {
-        sendErrorMessage(Common.NOT_LOGIN, "", "·Î±×ÀÎ ÇÏÁö ¾Ê¾Ò½À´Ï´Ù.\r\n·Î±×ÀÎ ÇØÁÖ¼¼¿ä");
+        sendErrorMessage(Common.NOT_LOGIN, "", "ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò½ï¿½ï¿½Ï´ï¿½.\r\nï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½");
     }
 
     /**
-     * ÆÄ¶ó¹ÌÅÍ °¹¼ö°¡ ºÎÁ·ÇÕ
+     * ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param command
      * @param work_flag
      */
     private void sendRequireParamMessage(String command, String work_flag) {
-        sendErrorMessage(command, work_flag, "ÆÄ¶ó¹ÌÅÍ °¹¼ö°¡ ºÎÁ·ÇÕ´Ï´Ù.");
+        sendErrorMessage(command, work_flag, "ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.");
     }
 
     /**
-     * ¼ÒÄÏ ¿¬°á ÈÄ ¸í·ÉÀÌ Àü´ÞµÇÁö ¾ÊÀ» °æ¿ì ¿¡·¯ Àü´Þ
+     * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Þµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
      * @param command "ERR"
      * @param work_flag
      */
     private void sendCommandTimeOutMessage() {
-        sendErrorMessage(Common.COMMAND_TIMEOUT, "", "¸í·ÉÀÌ ¿ÏÀüÈ÷ Àü´ÞµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+        sendErrorMessage(Common.COMMAND_TIMEOUT, "", "ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Þµï¿½ï¿½ï¿½ ï¿½Ê¾Ò½ï¿½ï¿½Ï´ï¿½.");
     }
 
     /**
-     * ¿Ã¹Ù¸£Áö ¾ÊÀº ¸í·É¾î ¿¡·¯
+     * ï¿½Ã¹Ù¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¾ï¿½ ï¿½ï¿½ï¿½ï¿½
      * @param command "ERR"
      * @param work_flag
      */
     private void sendInvalidCommandMessage() {
-        sendErrorMessage(Common.INVALID_COMMAND, "", "»ç¿ëÇÒ ¼ö ¾ø´Â ¸í·ÉÀÔ´Ï´Ù.");
+        sendErrorMessage(Common.INVALID_COMMAND, "", "ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
     }
 
     /**
-     * STX ·Î ½ÃÀÛÇÏÁö ¾Ê°Å³ª ETX ·Î ³¡³ªÁö ¾Ê´Â ÆÐÅ¶
+     * STX ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°Å³ï¿½ ETX ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½Å¶
      * @param command
      * @param work_flag
      */
     private void sendInvalidPacketMessage(String command, String work_flag) {
-        sendErrorMessage(command, work_flag, "ÆÐÅ¶ ¿À·ùÀÔ´Ï´Ù.");
+        sendErrorMessage(command, work_flag, "ï¿½ï¿½Å¶ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
     }   
 }
